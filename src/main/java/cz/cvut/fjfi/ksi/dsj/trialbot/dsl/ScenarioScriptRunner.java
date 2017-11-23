@@ -1,5 +1,6 @@
 package cz.cvut.fjfi.ksi.dsj.trialbot.dsl;
 
+import cz.cvut.fjfi.ksi.dsj.trialbot.model.Scenario;
 import cz.cvut.fjfi.ksi.dsj.trialbot.utils.FileUtils;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
@@ -21,11 +22,12 @@ public class ScenarioScriptRunner {
     shell = new GroovyShell(cfg);
   }
 
-  public void run() throws IOException {
+  public Scenario run() throws IOException {
 
     String source = FileUtils.loadFile(scriptPath);
-    Script script = shell.parse(source);
+    ScenarioScriptBase script = (ScenarioScriptBase) shell.parse(source);
     script.run();
+    return script.getScenario();
   }
 
   public static void main(String[] args) throws IOException {

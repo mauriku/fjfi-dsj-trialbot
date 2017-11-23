@@ -27,4 +27,10 @@ public abstract class ScenarioScriptBase extends Script {
   public void pause(int pause) {
     scenario.setPause(pause);
   }
+
+  public void rounds(int rounds) {scenario.setRounds(rounds);}
+
+  public Scenario getScenario() {
+    return scenario;
+  }
 }
