@@ -1,9 +1,6 @@
 package cz.cvut.fjfi.ksi.dsj.trialbot.simulation;
 
-import cz.cvut.fjfi.ksi.dsj.trialbot.model.Bot;
-import cz.cvut.fjfi.ksi.dsj.trialbot.model.Command;
-import cz.cvut.fjfi.ksi.dsj.trialbot.model.Position;
-import cz.cvut.fjfi.ksi.dsj.trialbot.model.Scenario;
+import cz.cvut.fjfi.ksi.dsj.trialbot.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +55,7 @@ public class SimulationState {
     // simulate bots
     for (Bot bot : bots) {
 
-      // TODO: bot actions in ROUND
+      bot.reactOn(Event.TURN, this);
 
       next.addCurrentPositionsToBeen();
     }
